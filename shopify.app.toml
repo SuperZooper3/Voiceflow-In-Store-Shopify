@@ -1,0 +1,10 @@
+# This file stores configurations for your Shopify app.
+
+scopes = "write_products"
+
+[webhooks]
+api_version = "2024-07"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks"
