@@ -1,7 +1,11 @@
+* {
+    font-family: "Assistant", sans-serif;
+}
+
 #chat-container {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
+    /* border: 1px solid black;
+    border-radius: 5px; */
+    /* padding: 10px; */
 }
 
 #chat-input{
@@ -9,29 +13,43 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
-    margin-top: 10px;
+    /* set the input box font family to commic sans */
+    font-family: "Assistant", sans-serif;
+    /* dissable outline when in the text box */
+    outline: none;
+    margin: 5px;
+}
+
+#chat-send-button{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #0080ff;
+    color: white;
+    cursor: pointer;
+    font-family: "Assistant", sans-serif;
+    margin: 5px;
 }
 
 #chat-box{
     max-height: 400px;
     overflow-y: scroll;
 }
+
 /* Shared styles */
 .vf-message {
     font-size: 16px;
-    margin: 10px;
+    margin: 5px;
     border-radius: 5px;
     padding: 10px;
 }
 
 /* Unique styles for user */
 .vf-message-user {
-    background-color: #0080ff;
     color: white;
 }
 
 /* Unique styles for agent */
 .vf-message-agent {
-    background-color: #F3F3F3;
     color: black;
 }

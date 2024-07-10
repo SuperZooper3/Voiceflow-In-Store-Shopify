@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const chatBox = document.getElementById('chat-box');
     const chatInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-button');
+    const sendButton = document.getElementById('chat-send-button');
 
     function addUserMessage(message) {
         const messageDiv = document.createElement('div');

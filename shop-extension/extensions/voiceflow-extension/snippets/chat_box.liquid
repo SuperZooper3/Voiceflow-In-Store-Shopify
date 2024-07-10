@@ -2,8 +2,8 @@
 
 <div id="chat-container" data-product-name="{{ product_name }}">
     <div id="chat-box"></div>
-    <input type="text" id="chat-input" placeholder="Type your message here..." />
-    <button id="send-button">Send</button>
+    <input type="text" id="chat-input" placeholder="{{ type_here_label }}" />
+    <button id="chat-send-button">{{ send_label }}</button>
 </div>
   
 <script src="{{ 'chat-box.js' | asset_url }}" defer></script>

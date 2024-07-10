@@ -1,11 +1,28 @@
 {% assign product_name = block.settings.product.title %}
+{% assign bot_background_colour = block.settings.bot_background_colour %}
+{% assign user_background_colour = block.settings.user_background_colour %}
+{% assign user_text_colour = block.settings.user_text_colour %}
+{% assign bot_text_colour = block.settings.bot_text_colour %}
+{% assign send_label = block.settings.send_label %}
+{% assign type_here_label = block.settings.type_here_label %}
+
+<style>
+.vf-message-user {
+    background-color: {{ user_background_colour }};
+    color: {{ user_text_colour }};
+}
+
+.vf-message-agent {
+    background-color: {{ bot_background_colour }};
+    color: {{ bot_text_colour }};
+}
+</style>
+
 <div>
-    {% comment %} {% if product_name %}
-        <p>Chat with us about {{ product_name }}</p>
-    {% else %}
-        <p>Chat with us</p>
-    {% endif %} {% endcomment %}
-    {% render 'chat_box', product_name: product_name %}
+    <h2>
+        {{ block.settings.chat_heading }}
+    </h2>
+    {% render 'chat_box', product_name: product_name, send_label: send_label, type_here_label: type_here_label %}
 </div>
 
 {% schema %}
@@ -14,8 +31,13 @@
     "target": "section",
     "settings": [
         { "type": "product", "id": "product", "label": "Product Discussed", "autofill": true },
-        { "type": "color", "id": "user_colour", "label": "User Message Colour", "default": "#3453ba" },
-        { "type": "color", "id": "bot_colour", "label": "Bot Message Colour", "default": "#ffffff"}
+        { "type": "color", "id": "bot_background_colour", "label": "Bot Message Colour", "default": "#F3F3F3"},
+        { "type": "color", "id": "bot_text_colour", "label": "Bot Text Colour", "default": "#000000" },
+        { "type": "color", "id": "user_background_colour", "label": "User Message Colour", "default": "#3453ba" },
+        { "type": "color", "id": "user_text_colour", "label": "User Text Colour", "default": "#ffffff" },
+        { "type": "textarea", "id": "chat_heading", "label": "Chat Heading", "default": "✨ Learn more with AI ✨" },
+        { "type": "text", "id": "send_label", "label": "Send Button Label", "default": "Send" },
+        { "type": "text", "id": "type_here_label", "label": "Type Box Placeholder", "default": "Type your message here..."}
     ]
 }
 {% endschema %}
