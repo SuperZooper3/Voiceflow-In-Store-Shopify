@@ -15,3 +15,6 @@ database.sqlite
 
 
 /extensions/*/dist
+
+shop-react-chatbox/build/
+shop-react-chatbox/dist/
