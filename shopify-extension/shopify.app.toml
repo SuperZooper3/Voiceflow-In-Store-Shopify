@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "6aacb18bf314bd78de8d3b8434c491e4"
-name = "voiceflow-in-store"
+name = "Voiceflow in Store"
 handle = "voiceflow-in-store"
-application_url = "https://consultant-sized-ty-appliance.trycloudflare.com"
+application_url = "https://single-ext-dont-orientation.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://consultant-sized-ty-appliance.trycloudflare.com/auth/callback",
-  "https://consultant-sized-ty-appliance.trycloudflare.com/auth/shopify/callback",
-  "https://consultant-sized-ty-appliance.trycloudflare.com/api/auth/callback"
+  "https://single-ext-dont-orientation.trycloudflare.com/auth/callback",
+  "https://single-ext-dont-orientation.trycloudflare.com/auth/shopify/callback",
+  "https://single-ext-dont-orientation.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -27,7 +27,7 @@ api_version = "2024-07"
 
   [[webhooks.subscriptions]]
   topics = [ "app/uninstalled" ]
-  uri = "/webhooks"
+  uri = "https://multiple-projects-holland-logged.trycloudflare.com/webhooks"
 
 [pos]
 embedded = false
