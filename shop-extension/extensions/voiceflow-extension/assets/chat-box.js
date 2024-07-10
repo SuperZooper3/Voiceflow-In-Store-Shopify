@@ -1,4 +1,3 @@
-// assets/chat-box.js
 document.addEventListener('DOMContentLoaded', function() {
     const chatBox = document.getElementById('chat-box');
     const chatInput = document.getElementById('chat-input');
@@ -46,5 +45,5 @@ document.addEventListener('DOMContentLoaded', function() {
         sendMessage();
       }
     });
-  });
+});
   
