@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ 'chat_styles.css' | asset_url }}">
 
-<div id="chat-container">
+<div id="chat-container" data-product-name="{{ product_name }}">
     <div id="chat-box"></div>
     <input type="text" id="chat-input" placeholder="Type your message here..." />
     <button id="send-button">Send</button>

@@ -1,13 +1,21 @@
+{% assign product_name = block.settings.product.title %}
 <div>
-    {% render 'chat_box' %}
+    {% comment %} {% if product_name %}
+        <p>Chat with us about {{ product_name }}</p>
+    {% else %}
+        <p>Chat with us</p>
+    {% endif %} {% endcomment %}
+    {% render 'chat_box', product_name: product_name %}
 </div>
 
 {% schema %}
 {
-  "name": "Voiceflow Chat",
-  "target": "section",
-  "settings": [
-  ]
+    "name": "Voiceflow Chat",
+    "target": "section",
+    "settings": [
+        { "type": "product", "id": "product", "label": "Product Discussed", "autofill": true },
+        { "type": "color", "id": "user_colour", "label": "User Message Colour", "default": "#3453ba" },
+        { "type": "color", "id": "bot_colour", "label": "Bot Message Colour", "default": "#ffffff"}
+    ]
 }
 {% endschema %}
-

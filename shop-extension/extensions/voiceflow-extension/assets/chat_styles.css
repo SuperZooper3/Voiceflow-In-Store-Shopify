@@ -15,6 +15,23 @@
 #chat-box{
     max-height: 400px;
     overflow-y: scroll;
+}
+/* Shared styles */
+.vf-message {
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
     padding: 10px;
-    color: purple;
+}
+
+/* Unique styles for user */
+.vf-message-user {
+    background-color: #0080ff;
+    color: white;
+}
+
+/* Unique styles for agent */
+.vf-message-agent {
+    background-color: #F3F3F3;
+    color: black;
 }
