@@ -9,25 +9,25 @@
 }
 
 #chat-input{
-    width: 100%;
+    width: calc(100% - 11px);
+    font-size: 15px;
     padding: 10px;
     border: 1px solid black;
-    border-radius: 5px;
-    /* set the input box font family to commic sans */
     font-family: "Assistant", sans-serif;
-    /* dissable outline when in the text box */
     outline: none;
     margin: 5px;
+    box-sizing: border-box; /* Add this line */
 }
 
 #chat-send-button{
     padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+    font-size: 15px;
     color: white;
     cursor: pointer;
     font-family: "Assistant", sans-serif;
     margin: 5px;
+    width: calc(100% - 11px);
+    box-sizing: border-box;
 }
 
 #chat-box{
