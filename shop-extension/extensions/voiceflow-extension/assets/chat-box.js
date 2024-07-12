@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('User ID:', userID);
     const VF_KEY = "VF.DM.668e8ab74739614b83262dff.zIhDF25G7evNRl29";
 
+
     function delay(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     const vfInteract = async (user, userAction) => {
+        buttonDiv.innerHTML = '';
         const interractionUrl = `https://general-runtime.voiceflow.com/state/user/${user}/interact`;
 
         const payload = {
@@ -56,12 +58,22 @@ document.addEventListener('DOMContentLoaded', function () {
             handleAgentResponse(res);
         });
     }
+
+    const vfSendAction = async (action) => {
+        console.log('Sending action:', action);
+        vfInteract(userID, action).then((res) => {
+            console.log(res);
+            handleAgentResponse(res);
+        });
+    }
+
     const chatContainer = document.getElementById('chat-container');
     const productName = chatContainer.dataset.productName;
 
     const chatBox = document.getElementById('chat-box');
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('chat-send-button');
+    const buttonDiv = document.getElementById('chat-button-box');
 
     function addUserMessage(message) {
         const messageDiv = document.createElement('div');
@@ -79,15 +91,32 @@ document.addEventListener('DOMContentLoaded', function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
+    function addAgentButton(buttons) {
+        for (const button of buttons) {
+            const buttonElement = document.createElement('button');
+            buttonElement.className = 'vf-message-button';
+            buttonElement.textContent = button.name;
+            buttonElement.addEventListener('click', function () {
+                addUserMessage(button.name);
+                vfSendAction(button.request);
+            });
+            buttonDiv.appendChild(buttonElement);
+        }
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
     async function handleAgentResponse(response) {
         for (const trace of response) {
             if (trace.type === 'text') {
                 addAgentMessage(trace.payload.message);
                 await delay(1000);
+            } if (trace.type === 'choice') {
+                addAgentButton(trace.payload.buttons);
             } else {
                 console.log('Unknown trace type, full trace below:', trace.type);
-                console.log(trace);
             }
+            console.log(trace);
         }
     }
 

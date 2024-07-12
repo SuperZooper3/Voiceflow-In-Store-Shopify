@@ -21,8 +21,7 @@
 
 #chat-send-button{
     padding: 10px;
-    font-size: 15px;
-    color: white;
+    font-size: 16px;
     cursor: pointer;
     font-family: "Assistant", sans-serif;
     margin: 5px;
@@ -51,4 +50,14 @@
 /* Unique styles for agent */
 .vf-message-agent {
     color: black;
+}
+
+.vf-message-button{
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Assistant", sans-serif;
+    margin: 5px;
+    width: calc(100% - 11px);
+    box-sizing: border-box;
 }
