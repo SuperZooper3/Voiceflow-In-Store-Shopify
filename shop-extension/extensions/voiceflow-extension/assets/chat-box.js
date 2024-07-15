@@ -89,7 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function addAgentMessage(message) {
         const messageDiv = document.createElement('div');
         messageDiv.className = 'vf-message vf-message-agent';
-        messageDiv.textContent = message;
+        message = message.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+        message = message.replace(/\*(.*?)\*/g, '<i>$1</i>');
+        message = message.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+        messageDiv.innerHTML = message;
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
@@ -101,6 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
             buttonElement.textContent = button.name;
             buttonElement.addEventListener('click', function () {
                 addUserMessage(button.name);
+                console.log('Button clicked:', button);
+                if (button.request.payload.actions) {
+                    for (const action of button.request.payload.actions) {
+                        if (action.type === 'open_url') {
+                            console.log('Opening URL:', action.payload.url);
+                            window.open(action.payload.url, '_blank');
+                        } else {
+                            console.log('Unknown button action type:', action.type);
+                        }
+                    }
+                }
+                console.log('Sending action:', button.request);
                 vfSendAction(button.request);
             });
             buttonDiv.appendChild(buttonElement);
