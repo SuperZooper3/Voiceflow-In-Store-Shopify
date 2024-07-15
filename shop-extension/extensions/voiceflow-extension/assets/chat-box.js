@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const vfInteract = async (user, userAction) => {
-        buttonDiv.innerHTML = '';
+        clearInputState();
+
         const interractionUrl = `https://general-runtime.voiceflow.com/state/user/${user}/interact`;
 
         const payload = {
@@ -74,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('chat-send-button');
     const buttonDiv = document.getElementById('chat-button-box');
+    const addToCartButton = document.getElementById('chat-add-to-cart');
+    const shareButton = document.getElementById('chat-copy-button');
 
     function addUserMessage(message) {
         const messageDiv = document.createElement('div');
@@ -91,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    function addAgentButton(buttons) {
+    function addAgentNormalButton(buttons) {
         for (const button of buttons) {
             const buttonElement = document.createElement('button');
             buttonElement.className = 'vf-message-button';
@@ -102,8 +105,23 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             buttonDiv.appendChild(buttonElement);
         }
-
         chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showAddToCart() {
+        addToCartButton.style.display = 'block';
+    }
+    
+    function hideAddToCart() {
+        addToCartButton.style.display = 'none';
+    }
+
+    function showShareButton() {
+        shareButton.style.display = 'block';
+    }
+
+    function hideShareButton() {
+        shareButton.style.display = 'none';
     }
 
     async function handleAgentResponse(response) {
@@ -111,9 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (trace.type === 'text') {
                 addAgentMessage(trace.payload.message);
                 await delay(1000);
-            } if (trace.type === 'choice') {
-                addAgentButton(trace.payload.buttons);
-            } else {
+            } else if (trace.type === 'choice') {
+                addAgentNormalButton(trace.payload.buttons);
+            } else if (trace.type === 'add_to_cart' || (trace.type === "trace" && trace.payload.name === "add_to_cart")) {
+                showAddToCart();
+            } else if (trace.type === 'share' || (trace.type === "trace" && trace.payload.name === "share")) {
+                showShareButton();
+            }
+            else {
                 console.log('Unknown trace type, full trace below:', trace.type);
             }
             console.log(trace);
@@ -128,7 +151,24 @@ document.addEventListener('DOMContentLoaded', function () {
         vfSendMessage(message);
     }
 
+    function copyToClipboard() {
+        const currentUrl = window.location.href;
+        navigator.clipboard.writeText(currentUrl).then(function() {
+            addAgentMessage('Product URL copied to clipboard');
+        }, function(err) {
+            addAgentMessage(`Here's the product URL: ${currentUrl}`);
+        });
+    }
+
+    function clearInputState() {
+        buttonDiv.innerHTML = '';
+        hideAddToCart();
+        hideShareButton();
+    }
+
     sendButton.addEventListener('click', sendMessage);
+    shareButton.addEventListener('click', copyToClipboard);
+
     chatInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             sendMessage();

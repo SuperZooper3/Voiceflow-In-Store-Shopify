@@ -8,15 +8,20 @@
     /* padding: 10px; */
 }
 
+#chat-text-input-container{
+    display: flex;
+}
+
 #chat-input{
-    width: calc(100% - 11px);
+    flex-grow: 1;
     font-size: 15px;
     padding: 10px;
     border: 1px solid black;
     font-family: "Assistant", sans-serif;
     outline: none;
-    margin: 5px;
-    box-sizing: border-box; /* Add this line */
+    margin: 3px;
+    box-sizing: border-box;
+    border-radius: 25px;
 }
 
 #chat-send-button{
@@ -24,9 +29,11 @@
     font-size: 16px;
     cursor: pointer;
     font-family: "Assistant", sans-serif;
-    margin: 5px;
-    width: calc(100% - 11px);
+    margin: 3px;
+    width: 10%;
     box-sizing: border-box;
+    float: right;
+    border-radius: 25px;
 }
 
 #chat-box{
@@ -34,22 +41,26 @@
     overflow-y: scroll;
 }
 
-/* Shared styles */
 .vf-message {
     font-size: 16px;
     margin: 5px;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 25px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
 }
 
-/* Unique styles for user */
 .vf-message-user {
     color: white;
+    float: right;
+    max-width: 70%;
 }
 
-/* Unique styles for agent */
 .vf-message-agent {
     color: black;
+    float: left; 
 }
 
 .vf-message-button{
@@ -58,6 +69,11 @@
     cursor: pointer;
     font-family: "Assistant", sans-serif;
     margin: 5px;
-    width: calc(100% - 11px);
     box-sizing: border-box;
+    border-radius: 25px;
+}
+
+#chat-all-button-container{
+    display: flex;
+    justify-content: center;
 }

@@ -2,9 +2,22 @@
 
 <div id="chat-container" data-product-name="{{ product_name }}">
     <div id="chat-box"></div>
-    <div id="chat-button-box"></div>
-    <input type="text" id="chat-input" placeholder="{{ type_here_label }}" />
-    <button id="chat-send-button">{{ send_label }}</button>
+    <div id="chat-all-button-container">
+        <div id="chat-button-box"></div>
+        <div id="chat-add-to-cart" style="display: none;">
+            <form method="post" action="/cart/add">
+                <input name="id" value="{{ block.settings.product.variants.first.id }}" type="hidden" />
+                <input class="vf-message-button" name="add" value="Order Now" type="submit" />
+            </form>
+        </div>
+        <div id="chat-copy-link">
+            <button id="chat-copy-button" class="vf-message-button" style="display: none;">Share</button>
+        </div>
+    </div>
+    <div id="chat-text-input-container">
+        <input type="text" id="chat-input" placeholder="{{ type_here_label }}" />
+        <button id="chat-send-button"><img src="{{ "send.svg" | asset_url }}" height="15" width="15" loading="lazy"></button>    
+    </div>
 </div>
   
 <script src="{{ 'chat-box.js' | asset_url }}" defer></script>

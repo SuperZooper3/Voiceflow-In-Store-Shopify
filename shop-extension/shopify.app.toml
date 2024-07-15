@@ -3,7 +3,7 @@
 client_id = "6aacb18bf314bd78de8d3b8434c491e4"
 name = "Voiceflow in Store"
 handle = "voiceflow-in-store"
-application_url = "https://conservative-bat-criteria-suggesting.trycloudflare.com"
+application_url = "https://accept-colleagues-betting-even.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://conservative-bat-criteria-suggesting.trycloudflare.com/auth/callback",
-  "https://conservative-bat-criteria-suggesting.trycloudflare.com/auth/shopify/callback",
-  "https://conservative-bat-criteria-suggesting.trycloudflare.com/api/auth/callback"
+  "https://accept-colleagues-betting-even.trycloudflare.com/auth/callback",
+  "https://accept-colleagues-betting-even.trycloudflare.com/auth/shopify/callback",
+  "https://accept-colleagues-betting-even.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
