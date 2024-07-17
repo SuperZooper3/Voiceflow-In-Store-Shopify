@@ -3,6 +3,13 @@
 <div id="chat-container" data-product-name="{{ product_name }}" data-page-slug="{{ page_slug }}">
     <div id="chat-box"></div>
     <div id="chat-all-button-container">
+        <div id="chat-box-typing-indicator-container" class="vf-message-button" style="display: none;">
+            <div class="chat-box-typing-indicator">   
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
         <div id="chat-button-box"></div>
         <div id="chat-add-to-cart" style="display: none;">
             <form method="post" action="/cart/add">

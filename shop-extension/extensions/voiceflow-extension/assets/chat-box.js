@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const vfInteract = async (user, userAction) => {
         clearInputState();
+        showTypingIndicator();
 
         const interractionUrl = `https://general-runtime.voiceflow.com/state/user/${user}/interact`;
 
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const postRes = await data.json();
         vfSaveTranscript();
+        hideTypingIndicator();
         return postRes;
     };
 
@@ -96,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const pageSlug = chatContainer.dataset.pageSlug;
 
     const chatBox = document.getElementById('chat-box');
+    const typingIndicator = document.getElementById('chat-box-typing-indicator-container');
     const chatInput = document.getElementById('chat-input');
     const sendButton = document.getElementById('chat-send-button');
     const buttonDiv = document.getElementById('chat-button-box');
@@ -164,6 +167,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function hideShareButton() {
         shareButton.style.display = 'none';
+    }
+
+    function showTypingIndicator() {
+        typingIndicator.style.display = 'block';
+    }
+    
+    function hideTypingIndicator() {
+        typingIndicator.style.display = 'none';
     }
 
     async function handleAgentResponse(response) {
