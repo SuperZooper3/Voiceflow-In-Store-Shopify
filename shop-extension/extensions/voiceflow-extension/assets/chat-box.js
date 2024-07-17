@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const userID = Math.floor(Math.random() * 1000000000000000);    
+    const userID = `${Math.floor(Math.random() * 1000000000000000)}`;    
     console.log('User ID:', userID);
     const VF_KEY = "VF.DM.66969025435363662b34a0a3.m57WDTlSEXjcUptB";
+    const VF_PROJECT_ID = "66968abb6d9824424357fbc8";
+    const VF_VERSION_ID = "66968abb6d9824424357fbc9";
 
     function delay(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
@@ -29,11 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // check if we get the response, if there's an error, we can catch it here
         if (!data.ok) {
-            throw new Error(`HTTP error! status: ${data.status}`);
-        } else {
-            const postRes = await data.json();
-            return postRes;
+            throw new Error(`Interact HTTP error! status: ${data.status}`);
         }
+
+        const postRes = await data.json();
+        vfSaveTranscript();
+        return postRes;
     };
 
     const vfSendLaunch = async (payload = null) => {
@@ -67,6 +70,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const vfSaveTranscript = async () => {
+        const transcriptsUrl = 'https://api.voiceflow.com/v2/transcripts';
+        const transcriptsOptions = {
+            method: 'PUT',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json',
+                Authorization: VF_KEY
+            },
+            body: JSON.stringify({projectID: VF_PROJECT_ID, versionID: VF_VERSION_ID, sessionID: `${userID}`}),
+        };
+        console.log('Saving transcript:', transcriptsOptions);
+        const data = await fetch(transcriptsUrl, transcriptsOptions);
+        console.log('Transcripts response:', data);
+        if (!data.ok) {
+            throw new Error(`Transcripts HTTP error! status: ${data.status}`);
+        }
+        const postRes = await data.json();
+        return postRes;
+    }
+
     const chatContainer = document.getElementById('chat-container');
     const productName = chatContainer.dataset.productName;
     const pageSlug = chatContainer.dataset.pageSlug;
@@ -93,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
         message = message.replace(/\*(.*?)\*/g, '<i>$1</i>');
         message = message.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
         // try to hyperlink URLs with a generous regex
-        message = message.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+        // message = message.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
         message = message.replace(/(\n)+/g, '<br>');
         messageDiv.innerHTML = message;
         chatBox.appendChild(messageDiv);
