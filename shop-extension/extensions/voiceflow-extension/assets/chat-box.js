@@ -92,6 +92,9 @@ document.addEventListener('DOMContentLoaded', function () {
         message = message.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
         message = message.replace(/\*(.*?)\*/g, '<i>$1</i>');
         message = message.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+        // try to hyperlink URLs with a generous regex
+        message = message.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+        message = message.replace(/(\n)+/g, '<br>');
         messageDiv.innerHTML = message;
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
