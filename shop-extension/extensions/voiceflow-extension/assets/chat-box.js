@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const userID = Math.floor(Math.random() * 1000000000000000);    
     console.log('User ID:', userID);
-    const VF_KEY = "VF.DM.668e8ab74739614b83262dff.zIhDF25G7evNRl29";
-
+    const VF_KEY = "VF.DM.66969025435363662b34a0a3.m57WDTlSEXjcUptB";
 
     function delay(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
@@ -70,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const chatContainer = document.getElementById('chat-container');
     const productName = chatContainer.dataset.productName;
+    const pageSlug = chatContainer.dataset.pageSlug;
 
     const chatBox = document.getElementById('chat-box');
     const chatInput = document.getElementById('chat-input');
@@ -190,5 +190,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    vfSendLaunch({ productName: productName });
+    vfSendLaunch({ productName: productName, pageSlug: pageSlug });
 });
