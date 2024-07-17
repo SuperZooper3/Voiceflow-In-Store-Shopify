@@ -22,9 +22,9 @@ export default function App() {
   return (
     <div className={styles.index}>
       <div className={styles.content}>
-        <h1 className={styles.heading}>A short heading about [your app]</h1>
+        <h1 className={styles.heading}>Voiceflow-In-Store for Shopify</h1>
         <p className={styles.text}>
-          A tagline about [your app] that describes your value proposition.
+          Connect your Voiceflow Agent to your Store to enable AI driven contextual conversations.
         </p>
         {showForm && (
           <Form className={styles.form} method="post" action="/auth/login">
@@ -40,16 +40,13 @@ export default function App() {
         )}
         <ul className={styles.list}>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Connect with Voiceflow</strong>. Connect with the best customizable platform for building conversational AI agents.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Get context specific answers</strong>. Give your AI agent context of where it is on the website for more accurate answers and seamless conversations.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Custom buttons</strong>. Built in Add to Cart buttons that your agent can serve to drive sales.
           </li>
         </ul>
       </div>

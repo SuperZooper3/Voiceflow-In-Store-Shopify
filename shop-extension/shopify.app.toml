@@ -3,7 +3,7 @@
 client_id = "6aacb18bf314bd78de8d3b8434c491e4"
 name = "Voiceflow in Store"
 handle = "voiceflow-in-store"
-application_url = "https://employers-serve-ee-proof.trycloudflare.com"
+application_url = "https://textile-dealers-ignored-supply.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://employers-serve-ee-proof.trycloudflare.com/auth/callback",
-  "https://employers-serve-ee-proof.trycloudflare.com/auth/shopify/callback",
-  "https://employers-serve-ee-proof.trycloudflare.com/api/auth/callback"
+  "https://textile-dealers-ignored-supply.trycloudflare.com/auth/callback",
+  "https://textile-dealers-ignored-supply.trycloudflare.com/auth/shopify/callback",
+  "https://textile-dealers-ignored-supply.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
