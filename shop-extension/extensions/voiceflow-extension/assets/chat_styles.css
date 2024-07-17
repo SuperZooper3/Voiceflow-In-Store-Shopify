@@ -2,12 +2,6 @@
     font-family: "Assistant", sans-serif;
 }
 
-#chat-container {
-    /* border: 1px solid black;
-    border-radius: 5px; */
-    /* padding: 10px; */
-}
-
 #chat-text-input-container{
     display: flex;
 }
