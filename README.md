@@ -31,3 +31,7 @@ Connect your Voiceflow Agent to your Store to enable AI driven contextual conver
 - Add your Policy and Rewards to KB and add Streamline Connector to your Shopify store to sync the products
 - From inside your Voiceflow project, also update the variable that stores the API key
 - Customise the flow as you would like
+
+<a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/lyx0uwy14jnoh3qhcubl" alt="trackgit-views" />
+</a>
