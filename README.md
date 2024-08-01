@@ -4,7 +4,7 @@ A Shopify theme app extension for Voiceflow that allows you to integrate any adv
 
 ![alt text](image-1.png)
 
-Connect your Voiceflow Agent to your Store to enable AI driven contextual conversations.
+Connect your Voiceflow Agent to your Store to enable AI driven contextual conversations. See a demo video of the integration [here](https://youtu.be/o-D4X1QCUv4) and an a development walkthrough [here](https://youtu.be/PQpQVdaGVtU).
 
 ## Features
 
